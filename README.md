@@ -9,10 +9,8 @@ The GUI of the application is accessed through a modern web browser (no installa
 
 [![CrashPlan Enterprise logo](https://images.weserv.nl/?url=raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/crashplan-enterprise-icon.png&w=200)](https://www.code42.com)[![CrashPlan Enterprise](https://dummyimage.com/400x110/ffffff/575757&text=CrashPlan+Enterprise)](https://www.code42.com)
 
-CrashPlan offers the most comprehensive online backup solution to tens of
-thousands of businesses around the world.  The highly secure, automatic and
-continuous service provides customers the peace of mind that their digital life
-is protected and easily accessible.
+One solution to safeguard corporate data against data loss, leak, misuse
+and theft.
 
 ---
 
