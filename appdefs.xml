@@ -1,0 +1,240 @@
+<!--
+Definitions for CrashPlan Enterprise docker container.
+
+This file is used as data source to generate README.md and unRAID template files
+from Jinja2 templates.
+-->
+<defs>
+  <app>
+    <id>19</id>
+    <gui_type>x11</gui_type>
+    <friendly_name>CrashPlan Enterprise</friendly_name>
+    <name>{{ defs.app.friendly_name|lower|replace(' ', '-') }}</name>
+    <project>
+      <description>
+One solution to safeguard corporate data against data loss, leak, misuse
+and theft.
+      </description>
+      <url>https://www.code42.com</url>
+    </project>
+    <unraid>
+      <support_url>https://forums.unraid.net/topic/XXXXX-support-crashplan-enterprise/</support_url>
+      <category>Backup:</category>
+    </unraid>
+    <container>
+      <rough_download_size>250MB</rough_download_size>
+      <storage_permissions>ro</storage_permissions>
+    </container>
+    <!-- Extra stuff to be added to the documentation. -->
+    <documentation>
+      <section>
+        <title level="2">Taking Over Existing Backup</title>
+        <content>
+If this container is replacing a CrashPlan installation (from Linux, Windows,
+MAC or another Docker container), your existing backup can be taken over to
+avoid re-uploading all your data.
+
+To proceed, make sure to carefully read the [official documentation].
+
+Here is a summary of what needs to be done:
+  1. Start CrashPlan Docker container.  Make sure the configuration directory
+     is not mapped to a folder used by a different CrashPlan container.
+  2. Sign in to your account.
+  3. Click the **Replace Existing** button to start the wizard.
+  4. Skip *Step 2 - File Transfert*.
+  4. Once done with the wizard, go to your device's details and click
+     *Manage Files*.  You will probably see missing items in the file
+     selection.  This is normal, since path to your files may be different in
+     the container.
+  5. Update the file selection by re-adding your files.  **Do not unselect
+     missing items yet**.
+  6. Perform a backup.  Because of deduplication, files will not be uploaded
+     again.
+  7. Once the backup is terminated, you can remove missing items **if you
+     don't care about file versions**.  Else, keep missing items.
+
+**NOTE**: Don't be confused by the directory structure from your old being
+visible in the *Manage Files* window.  By default, your files are now located
+under the `/storage` folder.
+        </content>
+      </section>
+      <section>
+        <title level="2">Why CrashPlan Self Update Is Disabled</title>
+        <content>
+One advantage of a Docker image is that it can be versioned and predictable,
+meaning that a specific version of the image always behaves the same way.  So
+if, for any reason, a new image version has a problem and doesn't work as
+expected, it's easy for one to revert to the previous version and be back on
+track.
+
+Allowing CrashPlan to update itself obviously breaks this benefit.  Also, since
+the container has only the minimal set of libraries and tools required to run
+CrashPlan, it would be easy for an automatic update to break the container by
+requiring new dependencies.  Finally, the automatic update script is not adapted
+for Alpine Linux (the distribution on which this container is based on) and
+assumes it is running on a full-featured distibution.  For example, this image
+doesn't have a desktop like normal installations and some of the tools required
+to perform the update are missing.
+        </content>
+      </section>
+      <section>
+        <title level="2">Troubleshooting</title>
+        <content/>
+      </section>
+      <section>
+        <title level="3">Crashes / Maximum Amount of Allocated Memory</title>
+        <content>
+If CrashPlan crashes unexpectedly with large backups, try to increase the
+maximum amount of memory CrashPlan is allowed to use. This can be done by:
+
+  1. Setting the `CRASHPLAN_SRV_MAX_MEM` environment variable.  See the
+     [Environment Variables](#environment-variables) section for more details.
+  2. Using the [solution provided by CrashPlan] from its support site.
+        </content>
+      </section>
+      <section>
+        <title level="3">Inotify's Watch Limit</title>
+        <content>
+If CrashPlan exceeds inotify's max watch limit, real-time file watching cannot
+work properly and the inotify watch limit needs to be increased on the **host**,
+not the container.
+
+For more details, see the CrashPlan's [Linux real-time file watching errors]
+article.
+        </content>
+      </section>
+      <section>
+        <title level="4">Synology</title>
+        <content>
+On Synology NAS, the instuctions provided by the article mentioned in the
+previous section apply, except that the inotify's max watch limit must be set in
+`/etc.defaults/sysctl.conf` (instead of `/etc/sysctl.conf`) to make the setting
+permanent.
+
+**NOTE**: After an upgrade of the DSM software, verify that the content of the
+file has not been overwritten.
+        </content>
+      </section>
+      <section>
+        <title level="3">Empty `/storage`</title>
+        <content>
+If the `/storage` folder inside the container is empty:
+
+  - Make sure the folder is properly mapped to the host.  This is done via the
+    `-v` parameter of the `docker run` command.  See the [Usage](#usage)
+    section.
+  - Make sure permissions and ownership of files on the host are correct and are
+    compatible with the user under which the container application is running
+    (defined by the `USER_ID` and `GROUP_ID` environment variables).  See the
+    [User/Group IDs](#usergroup-ids) section.
+
+NOTE: If running the application as root (`USER_ID=0` and `GROUP_ID=0`) makes
+the files visible, it confirms that there is a permission issue.
+        </content>
+      </section>
+      <section>
+        <title level="3">Device Status Is Waiting For Connection</title>
+        <content>
+If the status of your device is stuck on *Waiting for connection*, clearing the
+the cache of CrashPlan can help resolve the issue:
+
+  - Stop the container.
+  - Remove all the content of the `cache` directory found under the container's
+    configuration directory.  For example, if the `/config` folder of the
+    container is mapped to `/docker/appdata/crashplan-enterprise` on the host,
+    the following command (ran on the host) would clear the cache:
+    ```
+    rm -rf /docker/appdata/crashplan-enterprise/cache/*
+    ```
+  - Start the container.
+        </content>
+      </section>
+      <section>
+        <title level="3">Cannot Restore Files</title>
+        <content>
+If CrashPlan fails to restore files, make sure the location where files are
+restored have write permission.
+
+A typical installation has the data to be backup under the `/storage` folder.
+This folder is usually mapped to the host with *read-only* permission.  Thus,
+restoring files to `/storage` won't be allowed.  The solution is to temporarily
+change the permission of the volume to *read-write*.
+
+For example, if `/storage` is mapped to `$HOME` on the host, the container would
+need to be deleted and then re-created with the same arguments, with the exception
+of `-v $HOME:/storage:ro` that is replaced with `-v $HOME:/storage:rw`.
+        </content>
+      </section>
+      <section>
+        <title level="3">Upgrade Failed Error Message</title>
+        <content>
+Because the CrashPlan's self-upgrade feature is disabled in this container, an
+error message about failed upgrade can be seen when a new CrashPlan version is
+released.
+
+To fix this, [updating the container's image](#docker-image-update) to the
+latest version will also bring the latest version of CrashPlan.
+        </content>
+      </section>
+      <link>
+        <name>official documentation</name>
+        <url>https://support.code42.com/CrashPlan/6/Configuring/Replace_your_device</url>
+      </link>
+      <link>
+        <name>solution provided by CrashPlan</name>
+        <url>https://support.code42.com/CrashPlan/6/Troubleshooting/Adjust_Code42_app_settings_for_memory_usage_with_large_backups</url>
+      </link>
+      <link>
+        <name>Linux real-time file watching errors</name>
+        <url>https://support.code42.com/CrashPlan/6/Troubleshooting/Linux_real-time_file_watching_errors</url>
+      </link>
+    </documentation>
+    <!-- Changelog of the application. -->
+    <history>
+      <release>
+        <version>1.0.0</version>
+        <date>2018-12-19</date>
+        <change>Initial release.</change>
+      </release>
+    </history>
+  </app>
+  <container>
+    <!-- Environment variables -->
+    <environment_variables>
+      <environment_variable>
+        <name>CRASHPLAN_SRV_MAX_MEM</name>
+        <description>Maximum amount of memory the CrashPlan Engine is allowed to use. One of the following memory unit (case insensitive) should be added as a suffix to the size: `G`, `M` or `K`.  By default, when this variable is not set, a maximum of 1024MB (`1024M`) of memory is allowed. **NOTE**: Setting this variable as the same effect as running the `java mx VALUE, restart` command from the CrashPlan command line.</description>
+        <unraid_template>
+          <title>Maximum Memory</title>
+          <description>Maximum amount of memory the CrashPlan Engine is allowed to use.  One of the following memory unit (case insensitive) should be added as a suffix to the size: [b][i]G[/i][/b], [b][i]M[/i][/b] or [b][i]K[/i][/b]. By default, when this variable is not set, a maximum of 1024MB ([b][i]1024M[/i][/b]) of memory is allowed.</description>
+          <display>advanced</display>
+          <required>false</required>
+          <mask>false</mask>
+        </unraid_template>
+      </environment_variable>
+    </environment_variables>
+    <!-- Volumes -->
+    <volumes>
+      <volume>
+        <container_path>/flash</container_path>
+        <host_path_example/>
+        <description/>
+        <permissions>ro</permissions>
+        <unraid_template>
+          <title>Flash</title>
+          <description>This is where data on your unRAID flash device is located.  Useful to backup your unRAID configuration.[br]Container path: /flash</description>
+          <default>/boot</default>
+          <display>always</display>
+          <required>false</required>
+          <mask>false</mask>
+        </unraid_template>
+      </volume>
+    </volumes>
+    <!-- Network ports -->
+    <ports/>
+    <!-- Devices -->
+    <devices/>
+    <!-- Extra parameters -->
+    <extra_params/>
+  </container>
+</defs>
