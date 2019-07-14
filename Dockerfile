@@ -17,7 +17,7 @@ FROM jlesage/baseimage-gui:alpine-3.8-glibc-v3.5.2
 # Define software versions.
 ARG CRASHPLAN_VERSION=7.0.0
 ARG CRASHPLAN_TIMESTAMP=1525200006700
-ARG CRASHPLAN_BUILD=581
+ARG CRASHPLAN_BUILD=585
 
 # Define software download URLs.
 ARG CRASHPLAN_URL=https://www.crashplan.com/client/installers/Code42CrashPlan_${CRASHPLAN_VERSION}_${CRASHPLAN_TIMESTAMP}_${CRASHPLAN_BUILD}_Linux.tgz
