@@ -1,5 +1,5 @@
 # Docker container for CrashPlan Enterprise
-[![Docker Image Size](https://img.shields.io/microbadger/image-size/jlesage/crashplan-enterprise)](http://microbadger.com/#/images/jlesage/crashplan-enterprise) [![Build Status](https://travis-ci.org/jlesage/docker-crashplan-enterprise.svg?branch=master)](https://travis-ci.org/jlesage/docker-crashplan-enterprise) [![GitHub Release](https://img.shields.io/github/release/jlesage/docker-crashplan-enterprise.svg)](https://github.com/jlesage/docker-crashplan-enterprise/releases/latest) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/JocelynLeSage/0usd)
+[![Docker Image Size](https://img.shields.io/microbadger/image-size/jlesage/crashplan-enterprise)](http://microbadger.com/#/images/jlesage/crashplan-enterprise) [![Build Status](https://drone.le-sage.com/api/badges/jlesage/docker-crashplan-enterprise/status.svg)](https://drone.le-sage.com/jlesage/docker-crashplan-enterprise) [![GitHub Release](https://img.shields.io/github/release/jlesage/docker-crashplan-enterprise.svg)](https://github.com/jlesage/docker-crashplan-enterprise/releases/latest) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/JocelynLeSage/0usd)
 
 This is a Docker container for [CrashPlan Enterprise](https://www.code42.com).
 
