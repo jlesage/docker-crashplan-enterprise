@@ -192,6 +192,11 @@ latest version will also bring the latest version of CrashPlan.
     <!-- Changelog of the application. -->
     <history>
       <release>
+        <version>1.4.1</version>
+        <date>2020-04-06</date>
+        <change>Fixed handling of CRASHPLAN_SRV_MAX_MEM.</change>
+      </release>
+      <release>
         <version>1.4.0</version>
         <date>2020-02-12</date>
         <change>Upgraded CrashPlan Enterprise to version 7.7.0.</change>
