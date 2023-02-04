@@ -8,7 +8,7 @@ installation or configuration needed on the client side) or via any VNC client.
 
 ---
 
-[![CrashPlan Enterprise logo](https://images.weserv.nl/?url=raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/crashplan-enterprise-icon.png&w=200)](https://www.code42.com)[![CrashPlan Enterprise](https://images.placeholders.dev/?width=640&height=110&fontFamily=Georgia,sans-serif&fontWeight=400&fontSize=52&text=CrashPlan%20Enterprise&bgColor=rgba(0,0,0,0.0)&textColor=rgba(121,121,121,1))](https://www.code42.com)
+[![CrashPlan Enterprise logo](https://images.weserv.nl/?url=raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/crashplan-enterprise-icon.png&w=110)](https://www.code42.com)[![CrashPlan Enterprise](https://images.placeholders.dev/?width=640&height=110&fontFamily=Georgia,sans-serif&fontWeight=400&fontSize=52&text=CrashPlan%20Enterprise&bgColor=rgba(0,0,0,0.0)&textColor=rgba(121,121,121,1))](https://www.code42.com)
 
 One solution to safeguard corporate data against data loss, leak, misuse
 and theft.
