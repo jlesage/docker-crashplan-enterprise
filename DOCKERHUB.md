@@ -26,13 +26,13 @@ docker run -d \
     --name=crashplan-enterprise \
     -p 5800:5800 \
     -v /docker/appdata/crashplan-enterprise:/config:rw \
-    -v $HOME:/storage:ro \
+    -v /home/user:/storage:ro \
     jlesage/crashplan-enterprise
 ```
 
 Where:
   - `/docker/appdata/crashplan-enterprise`: This is where the application stores its configuration, states, log and any files needing persistency.
-  - `$HOME`: This location contains files from your host that need to be accessible to the application.
+  - `/home/user`: This location contains files from your host that need to be accessible to the application.
 
 Browse to `http://your-host-ip:5800` to access the CrashPlan Enterprise GUI.
 Files from the host appear under the `/storage` folder in the container.
