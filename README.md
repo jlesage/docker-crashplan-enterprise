@@ -1,7 +1,7 @@
 # Docker container for CrashPlan Enterprise
 [![Docker Image Size](https://img.shields.io/docker/image-size/jlesage/crashplan-enterprise/latest)](https://hub.docker.com/r/jlesage/crashplan-enterprise/tags) [![Build Status](https://github.com/jlesage/docker-crashplan-enterprise/actions/workflows/build-image.yml/badge.svg?branch=master)](https://github.com/jlesage/docker-crashplan-enterprise/actions/workflows/build-image.yml) [![GitHub Release](https://img.shields.io/github/release/jlesage/docker-crashplan-enterprise.svg)](https://github.com/jlesage/docker-crashplan-enterprise/releases/latest) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/JocelynLeSage)
 
-This is a Docker container for [CrashPlan Enterprise](https://www.code42.com).
+This project implements a Docker container for [CrashPlan Enterprise](https://www.code42.com).
 
 The GUI of the application is accessed through a modern web browser (no
 installation or configuration needed on the client side) or via any VNC client.
@@ -83,6 +83,7 @@ docker run [-d] \
     [-p <HOST_PORT>:<CONTAINER_PORT>]... \
     jlesage/crashplan-enterprise
 ```
+
 | Parameter | Description |
 |-----------|-------------|
 | -d        | Run the container in the background.  If not set, the container runs in the foreground. |
@@ -330,11 +331,13 @@ Assuming that container's ports are mapped to the same host's ports, the
 graphical interface of the application can be accessed via:
 
   * A web browser:
+
 ```
 http://<HOST IP ADDR>:5800
 ```
 
   * Any VNC client:
+
 ```
 <HOST IP ADDR>:5900
 ```
