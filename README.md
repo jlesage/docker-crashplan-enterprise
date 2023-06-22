@@ -140,7 +140,7 @@ While this can be useful for the user to adjust the value of environment
 variables to fit its needs, it can also be confusing and dangerous to keep all
 of them.
 
-A good pratice is to set/keep only the variables that are needed for the
+A good practice is to set/keep only the variables that are needed for the
 container to behave as desired in a specific setup.  If the value of variable is
 kept to its default value, it means that it can be removed.  Keep in mind that
 all variables are optional, meaning that none of them is required for the
@@ -161,7 +161,7 @@ Removing environment variables that are not needed provides some advantages:
     on Synology, where an environment variable without value might not be
     allowed.  This behavior is wrong: it's absolutely fine to have a variable
     without value.  In fact, this container does have variables without value by
-    default.  Thus, removing uneeded variables is a good way to prevent
+    default.  Thus, removing unneeded variables is a good way to prevent
     deployment issue on these devices.
 
 ### Data Volumes
@@ -549,7 +549,7 @@ Here is a summary of what needs to be done:
      is not mapped to a folder used by a different CrashPlan container.
   2. Sign in to your account.
   3. Click the **Replace Existing** button to start the wizard.
-  4. Skip *Step 2 - File Transfert*.
+  4. Skip *Step 2 - File Transfer*.
   4. Once done with the wizard, go to your device's details and click
      *Manage Files*.  You will probably see missing items in the file
      selection.  This is normal, since path to your files may be different in
@@ -565,7 +565,7 @@ Here is a summary of what needs to be done:
 visible in the *Manage Files* window.  By default, your files are now located
 under the `/storage` folder.
 
-[official documentation]: https://support.code42.com/CrashPlan/6/Configuring/Replace_your_device
+[official documentation]: https://support.code42.com/hc/en-us/articles/14827668736279-Replace-your-device
 
 ## Why CrashPlan Self Update Is Disabled
 
@@ -580,7 +580,7 @@ the container has only the minimal set of libraries and tools required to run
 CrashPlan, it would be easy for an automatic update to break the container by
 requiring new dependencies.  Finally, the automatic update script is not adapted
 for Alpine Linux (the distribution on which this container is based on) and
-assumes it is running on a full-featured distibution.  For example, this image
+assumes it is running on a full-featured distribution.  For example, this image
 doesn't have a desktop like normal installations and some of the tools required
 to perform the update are missing.
 
@@ -595,7 +595,7 @@ maximum amount of memory CrashPlan is allowed to use. This can be done by:
      [Environment Variables](#environment-variables) section for more details.
   2. Using the [solution provided by CrashPlan] from its support site.
 
-[solution provided by CrashPlan]: https://support.code42.com/CrashPlan/6/Troubleshooting/Adjust_Code42_app_settings_for_memory_usage_with_large_backups
+[solution provided by CrashPlan]: https://support.code42.com/hc/en-us/articles/14827635282583-Adjust-Code42-agent-settings-for-memory-usage-with-large-backups
 
 ### Inotify's Watch Limit
 
@@ -606,11 +606,11 @@ not the container.
 For more details, see the CrashPlan's [Linux real-time file watching errors]
 article.
 
-[Linux real-time file watching errors]: https://support.code42.com/CrashPlan/6/Troubleshooting/Linux_real-time_file_watching_errors
+[Linux real-time file watching errors]: https://support.code42.com/hc/en-us/articles/14827708807959-Linux-real-time-file-watching-errors
 
 #### Synology
 
-On Synology NAS, the instuctions provided by the article mentioned in the
+On Synology NAS, the instructions provided by the article mentioned in the
 previous section apply, except that the inotify's max watch limit must be set in
 `/etc.defaults/sysctl.conf` (instead of `/etc/sysctl.conf`) to make the setting
 permanent.
