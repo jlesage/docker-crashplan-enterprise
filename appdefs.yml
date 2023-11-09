@@ -12,6 +12,7 @@ app:
   name: crashplan-enterprise
   friendly_name: CrashPlan Enterprise
   gui_type: x11
+  base_os: alpine
   project:
     description: |-
       One solution to safeguard corporate data against data loss, leak, misuse
