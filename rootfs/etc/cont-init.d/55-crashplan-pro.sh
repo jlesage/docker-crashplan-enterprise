@@ -3,12 +3,6 @@
 set -e # Exit immediately if a command exits with a non-zero status.
 set -u # Treat unset variables as an error.
 
-get_cp_max_mem() {
-    if [ -f "$1" ]; then
-        cat "$1" | sed -n 's/.*<javaMemoryHeapMax>\(.*\)<\/javaMemoryHeapMax>.*/\1/p'
-    fi
-}
-
 # Generate machine id.
 # NOTE: CrashPlan requires the machine-id to be the same to avoid re-login.
 # Thus, it needs to be saved into the config directory.
@@ -28,7 +22,7 @@ mkdir -p /config/var
 mkdir -p /config/repository/metadata
 mkdir -p /config/.crashplan
 
-# Workaround for a crash that occurs with the enfine with version 11.0.1.33.
+# Workaround for a crash that occurs with the engine with version 11.0.1.33.
 # See https://github.com/jlesage/docker-crashplan-pro/issues/416
 mkdir -p /dev/input/by-path
 
@@ -74,7 +68,7 @@ fi
 # Update CrashPlan Engine max memory if needed.
 if [ "${CRASHPLAN_SRV_MAX_MEM:-UNSET}" != "UNSET" ]; then
   # Validate the max memory value.
-  if ! echo "$CRASHPLAN_SRV_MAX_MEM" | grep -q "^[0-9]\+[g|G|m|M|k|K]\?$"
+  if ! echo "$CRASHPLAN_SRV_MAX_MEM" | grep -q "^[0-9]\+[g|G|m|M|k|K]$"
   then
     echo "ERROR: invalid value for CRASHPLAN_SRV_MAX_MEM variable: '$CRASHPLAN_SRV_MAX_MEM'."
     exit 1
