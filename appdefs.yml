@@ -23,7 +23,7 @@ app:
       **Warning**: Make sure to read the *Taking Over Existing Backup* section of the
       documentation if you are installing this container to replace another CrashPlan
       installation (from Windows, Linux, Mac or even another Docker container).
-    support_url: https://forums.unraid.net/topic/XXXXX-support-crashplan-enterprise/
+    #support_url: https://forums.unraid.net/topic/XXXXX-support-crashplan-enterprise/
     category: "Backup:"
   documentation:
     sections:
