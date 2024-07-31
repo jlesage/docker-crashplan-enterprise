@@ -6,17 +6,19 @@
 [![Build Status](https://img.shields.io/github/actions/workflow/status/jlesage/docker-crashplan-enterprise/build-image.yml?logo=github&branch=master&style=for-the-badge)](https://github.com/jlesage/docker-crashplan-enterprise/actions/workflows/build-image.yml)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg?style=for-the-badge)](https://paypal.me/JocelynLeSage)
 
-This project implements a Docker container for [CrashPlan Enterprise](https://www.code42.com).
+This project implements a Docker container for [CrashPlan Enterprise](https://www.crashplan.com).
 
 The GUI of the application is accessed through a modern web browser (no
 installation or configuration needed on the client side) or via any VNC client.
 
 ---
 
-[![CrashPlan Enterprise logo](https://images.weserv.nl/?url=raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/crashplan-enterprise-icon.png&w=110)](https://www.code42.com)[![CrashPlan Enterprise](https://images.placeholders.dev/?width=640&height=110&fontFamily=monospace&fontWeight=400&fontSize=52&text=CrashPlan%20Enterprise&bgColor=rgba(0,0,0,0.0)&textColor=rgba(121,121,121,1))](https://www.code42.com)
+[![CrashPlan Enterprise logo](https://images.weserv.nl/?url=raw.githubusercontent.com/jlesage/docker-templates/master/jlesage/images/crashplan-enterprise-icon.png&w=110)](https://www.crashplan.com)[![CrashPlan Enterprise](https://images.placeholders.dev/?width=640&height=110&fontFamily=monospace&fontWeight=400&fontSize=52&text=CrashPlan%20Enterprise&bgColor=rgba(0,0,0,0.0)&textColor=rgba(121,121,121,1))](https://www.crashplan.com)
 
-One solution to safeguard corporate data against data loss, leak, misuse
-and theft.
+CrashPlan provides peace of mind through secure, scalable, and
+straightforward endpoint data backup. We help organizations recover from
+any worst-case scenario, whether it is a disaster, simple human error, a
+stolen laptop, ransomware or an as-of-yet undiscovered calamity.
 
 ---
 

@@ -15,9 +15,11 @@ app:
   base_os: alpine
   project:
     description: |-
-      One solution to safeguard corporate data against data loss, leak, misuse
-      and theft.
-    url: https://www.code42.com
+      CrashPlan provides peace of mind through secure, scalable, and
+      straightforward endpoint data backup. We help organizations recover from
+      any worst-case scenario, whether it is a disaster, simple human error, a
+      stolen laptop, ransomware or an as-of-yet undiscovered calamity.
+    url: https://www.crashplan.com
   unraid:
     extra_description: >-
       **Warning**: Make sure to read the *Taking Over Existing Backup* section of the
