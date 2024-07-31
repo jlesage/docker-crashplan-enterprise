@@ -8,8 +8,8 @@
 ARG DOCKER_IMAGE_VERSION=
 
 # Define software versions.
-ARG CRASHPLAN_VERSION=11.2.0
-ARG CRASHPLAN_BUILD=520
+ARG CRASHPLAN_VERSION=11.4.0
+ARG CRASHPLAN_BUILD=503
 
 # Define software download URLs.
 ARG CRASHPLAN_URL=https://download.crashplan.com/installs/agent/cloud/${CRASHPLAN_VERSION}/${CRASHPLAN_BUILD}/install/CrashPlan_${CRASHPLAN_VERSION}_${CRASHPLAN_BUILD}_Linux.tgz
@@ -39,9 +39,9 @@ RUN \
     # Keep a copy of the default config.
     mv ${TARGETDIR}/conf /defaults/conf && \
     # Make sure the UI connects by default to the engine using the loopback IP address (127.0.0.1).
-    sed-patch '/<orgType>ENTERPRISE<\/orgType>/a \\t<serviceUIConfig>\n\t\t<serviceHost>127.0.0.1<\/serviceHost>\n\t<\/serviceUIConfig>' /defaults/conf/default.service.xml && \
+    sed-patch '/<\/serviceBackupConfig>/a \\t<serviceUIConfig>\n\t\t<serviceHost>127.0.0.1<\/serviceHost>\n\t<\/serviceUIConfig>' /defaults/conf/default.service.xml && \
     # Add the javaMemoryHeapMax setting to the default service file.
-    sed-patch '/<serviceUIConfig>/i\\t<javaMemoryHeapMax nil="true"/>' /defaults/conf/default.service.xml && \
+    #sed-patch '/<serviceUIConfig>/i\\t<javaMemoryHeapMax nil="true"/>' /defaults/conf/default.service.xml && \
     # Prevent automatic updates.
     rm -r /usr/local/crashplan/upgrade && \
     touch /usr/local/crashplan/upgrade && chmod 400 /usr/local/crashplan/upgrade && \
