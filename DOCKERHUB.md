@@ -9,8 +9,8 @@
 
 This is a Docker container for [CrashPlan Enterprise](https://www.crashplan.com).
 
-The GUI of the application is accessed through a modern web browser (no
-installation or configuration needed on the client side) or via any VNC client.
+The graphical user interface (GUI) of the application can be accessed through a
+modern web browser, requiring no installation or configuration on the client
 
 ---
 
@@ -26,8 +26,8 @@ stolen laptop, ransomware or an as-of-yet undiscovered calamity.
 ## Quick Start
 
 **NOTE**:
-    The Docker command provided in this quick start is given as an example
-    and parameters should be adjusted to your need.
+    The Docker command provided in this quick start is an example, and parameters
+    should be adjusted to suit your needs.
 
 Launch the CrashPlan Enterprise docker container with the following command:
 ```shell
@@ -41,10 +41,10 @@ docker run -d \
 
 Where:
 
-  - `/docker/appdata/crashplan-enterprise`: This is where the application stores its configuration, states, log and any files needing persistency.
-  - `/home/user`: This location contains files from your host that need to be accessible to the application.
+  - `/docker/appdata/crashplan-enterprise`: Stores the application's configuration, state, logs, and any files requiring persistency.
+  - `/home/user`: Contains files from the host that need to be accessible to the application.
 
-Browse to `http://your-host-ip:5800` to access the CrashPlan Enterprise GUI.
+Access the CrashPlan Enterprise GUI by browsing to `http://your-host-ip:5800`.
 Files from the host appear under the `/storage` folder in the container.
 
 ## Documentation
@@ -53,9 +53,7 @@ Full documentation is available at https://github.com/jlesage/docker-crashplan-e
 
 ## Support or Contact
 
-Having troubles with the container or have questions?  Please
-[create a new issue].
+Having troubles with the container or have questions? Please
+[create a new issue](https://github.com/jlesage/docker-crashplan-enterprise/issues).
 
-For other great Dockerized applications, see https://jlesage.github.io/docker-apps.
-
-[create a new issue]: https://github.com/jlesage/docker-crashplan-enterprise/issues
+For other Dockerized applications, visit https://jlesage.github.io/docker-apps.
